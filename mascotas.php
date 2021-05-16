@@ -1,6 +1,14 @@
 <?php
   include 'config.php';
   $consulta->conectarBaseDatos();
+  if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $consulta->asignarConsulta("delete from mascota where id =$id");
+    echo "<script>window.location='mascotas.php'</script>";
+  }
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -38,7 +46,7 @@
     </nav>
     <div class="container">
         <h1>Mascotas</h1>
-        <a href="crearMascota.php" class="btn btn-primary btn-block my-4" >Crear nueva mascota</a>
+        <a href="crear.php" class="btn btn-primary btn-block my-4" >Crear nueva mascota</a>
         <?php
           $consulta->asignarConsulta("select * from mascota");
           $total = $consulta->obtenerTotalRegistros();
@@ -78,8 +86,8 @@
             {"data":"nombre"},
             {"data":"descripcion"},
             {"render": function ( data, type, full, meta) {
-                return "<a class='btn btn-warning bt-sm' href=''>Editar</a> "+
-                       "<button class='btn btn-danger bt-sm' onclick=''>Eliminar</button>";
+                return "<a class='btn btn-warning bt-sm' href='detalle.php?id="+full.id+"'>Editar</a> "+
+                       "<a class='btn btn-danger bt-sm' href='mascotas.php?id="+full.id+"'>Eliminar</a>";
             }
           }]
         })

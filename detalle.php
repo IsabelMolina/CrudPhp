@@ -1,14 +1,17 @@
 
 <?php
-  include "config.php";
-  if(isset($_POST['btnAgregar'])){
-    $nombre = $_POST['nombre'];
+  include 'config.php';
+  $consulta->conectarBaseDatos();
+  if(isset($_POST["btnEditar"])){
+    $nombre = $_POST["nombre"];
     $descripcion = $_POST['descripcion'];
-    $consulta->conectarBaseDatos();
-    $consulta->asignarConsulta("insert into mascota(id, nombre, descripcion) values(null,'".$nombre."','".$descripcion."' )");
-    $consulta->liberarConsulta();
-    $consulta->cerrarConexion();
+    $id = $_GET['id'];
+    $consulta->asignarConsulta("update mascota set nombre='".$nombre."', descripcion='".$descripcion."' where id=$id");
     echo "<script>window.location='mascotas.php'</script>";
+  }
+  else{
+    $consulta->asignarConsulta("select * from mascota where id='".$_GET['id']."'");
+    $mascota = mysqli_fetch_array($consulta->obtenerConsulta());
   }
 ?>
 
@@ -16,7 +19,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Php - Crear nueva mascota</title>
+    <title>Php - Editar mascota</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="public/css/bootstrap.min.css" rel="stylesheet">
@@ -49,23 +52,22 @@
     </nav>
 
     <div class="container">
-        <h1>Crear</h1>
+        <h1>Detalle mascota</h1>
 
-        <form class="" action="crearMascota.php" method="post">
+        <form class="" action="detalle.php?id='<?php echo $mascota['id']; ?>'" method="post">
           <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresar nombre" required>
+            <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo $mascota['nombre'] ?>" required>
           </div>
           <div class="form-group">
             <label for="descripcion">Descripion</label>
-            <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion" required>
+            <input type="text" class="form-control" name="descripcion" id="descripcion" value="<?php echo $mascota['descripcion']?>" required>
           </div>
-          <input type="submit" name="btnAgregar"class="btn btn-primary"></input>
+          <input type="submit" name="btnEditar" class="btn btn-warning" value="Editar"></input>
         </form>
 
     </div>
-
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>  
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="public/js/bootstrap.min.js" ></script>
   </body>
 </html>
