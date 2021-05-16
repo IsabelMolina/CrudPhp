@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <?php echo $masterPage->obtenerScriptsCabecera(); ?>
-    
+
   </head>
 
   <body>
@@ -39,17 +39,19 @@
             echo "No se encuentran mascotas";
           }
           else{ ?>
-            <table id="tablaMascotas" class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Descripcion</th>
-                  <th scope="col">Accion</th>
-                </tr>
+            <div class="table-responsive">
+              <table id="tablaMascotas" class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Accion</th>
+                  </tr>
 
-              </thead>
-            </table>
+                </thead>
+              </table>
+            </div>
         <?php } ?>
 
     </div>
