@@ -1,13 +1,16 @@
 <?php
   include 'config.php';
+  include 'masterPage.php';
+
   $consulta->conectarBaseDatos();
+
+  $masterPage = new masterPage();
+
   if(isset($_GET['id'])){
     $id = $_GET['id'];
     $consulta->asignarConsulta("delete from mascota where id =$id");
     echo "<script>window.location='mascotas.php'</script>";
   }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -16,34 +19,14 @@
     <meta charset="utf-8">
     <title>Php - Inicio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="public/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
+    <?php echo $masterPage->obtenerScriptsCabecera(); ?>
+    
   </head>
+
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Php</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Servicios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Mascotas</a>
-            </li>
+    <?php echo $masterPage->obtenerNavegacion(); ?>
 
-          </ul>
-
-        </div>
-      </div>
-    </nav>
     <div class="container">
         <h1>Mascotas</h1>
         <a href="crear.php" class="btn btn-primary btn-block my-4" >Crear nueva mascota</a>
@@ -70,9 +53,7 @@
         <?php } ?>
 
     </div>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
-    <script src="public/js/bootstrap.min.js" ></script>
+    <?php echo $masterPage->obtenerScriptsPie(); ?>
 
     <script>
       $.get("obtenerMascotas.php", function(data){
