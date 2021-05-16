@@ -1,0 +1,8 @@
+{
+    "name": "isabel/mascote",
+    "description": "Crud Php y MySql",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "beta",
+    "require": {}
+}
