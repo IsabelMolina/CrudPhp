@@ -2,9 +2,10 @@
   include 'config.php';
   include 'masterPage.php';
 
-  $consulta->conectarBaseDatos();
-
   $masterPage = new masterPage();
+  $title = "Mascotas";
+
+  $consulta->conectarBaseDatos();
 
   if(isset($_GET['id'])){
     $id = $_GET['id'];
@@ -13,19 +14,7 @@
   }
 
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Php - Inicio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <?php echo $masterPage->obtenerScriptsCabecera(); ?>
-
-  </head>
-
-  <body>
-    <?php echo $masterPage->obtenerNavegacion(); ?>
+<?php include 'template/cabecera.php'; ?>
 
     <div class="container">
         <h1>Mascotas</h1>
@@ -55,27 +44,28 @@
         <?php } ?>
 
     </div>
-    <?php echo $masterPage->obtenerScriptsPie(); ?>
 
-    <script>
-      $.get("obtenerMascotas.php", function(data){
-        const mascotas = JSON.parse(data);
+<?php include 'template/pie.php'; ?>
 
-        $("#tablaMascotas").DataTable({
-          "language": { "url": "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json" },
-          "data": mascotas,
-          "columns": [
-            {"data":"id"},
-            {"data":"nombre"},
-            {"data":"descripcion"},
-            {"render": function ( data, type, full, meta) {
-                return "<a class='btn btn-warning bt-sm' href='detalle.php?id="+full.id+"'>Editar</a> "+
-                       "<a class='btn btn-danger bt-sm' href='mascotas.php?id="+full.id+"'>Eliminar</a>";
-            }
-          }]
-        })
+<script>
 
-      })
-    </script>
-  </body>
-</html>
+  $.get("obtenerMascotas.php", function(data){
+    const mascotas = JSON.parse(data);
+
+    $("#tablaMascotas").DataTable({
+      "language": { "url": "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json" },
+      "data": mascotas,
+      "columns": [
+        {"data":"id"},
+        {"data":"nombre"},
+        {"data":"descripcion"},
+        {"render": function ( data, type, full, meta) {
+            return "<a class='btn btn-warning bt-sm' href='detalle.php?id="+full.id+"'>Editar</a> "+
+                   "<a class='btn btn-danger bt-sm' href='mascotas.php?id="+full.id+"'>Eliminar</a>";
+        }
+      }]
+    })
+
+  })
+
+</script>
