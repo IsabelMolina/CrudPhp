@@ -5,5 +5,5 @@
   $consulta->asignarServidor("localhost");
   $consulta->asignarUsuario("root");
   $consulta->asignarContrasena("");
-  $consulta->asignarBaseDatos("mascotas");
+  $consulta->asignarBaseDatos("veterinaria");
 ?>
