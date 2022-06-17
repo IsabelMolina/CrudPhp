@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-07-2021 a las 04:22:05
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.1.32
+-- Tiempo de generación: 17-06-2022 a las 03:12:46
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `mascotas`
+-- Base de datos: `veterinaria`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +38,7 @@ CREATE TABLE `mascota` (
 --
 
 INSERT INTO `mascota` (`id`, `nombre`, `descripcion`) VALUES
-(6, 'Bonny', 'Hermoso cachorroo');
+(18, 'Bonni', 'hermosa perrita');
 
 --
 -- Índices para tablas volcadas
@@ -59,7 +58,7 @@ ALTER TABLE `mascota`
 -- AUTO_INCREMENT de la tabla `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
