@@ -5,8 +5,6 @@
     $descripcion = $_POST['descripcion'];
     $consulta->conectarBaseDatos();
     $consulta->asignarConsulta("insert into mascota(id, nombre, descripcion) values(null,'".$nombre."','".$descripcion."' )");
-    $consulta->liberarConsulta();
-    $consulta->cerrarConexion();
     echo "<script>window.location='mascotas.php'</script>";
   }
 ?>

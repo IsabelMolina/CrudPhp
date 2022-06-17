@@ -6,8 +6,6 @@
     $id = $_GET['id'];
     $consulta->conectarBaseDatos();
     $consulta->asignarConsulta("update mascota set nombre='".$nombre."', descripcion='".$descripcion."' where id=$id");
-    $consulta->liberarConsulta();
-    $consulta->cerrarConexion();
     echo "<script>window.location='mascotas.php'</script>";
   }
 ?>
