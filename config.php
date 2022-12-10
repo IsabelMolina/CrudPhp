@@ -1,4 +1,5 @@
 <?php
+  // Eliminar
   include 'cConexion.php';
   include 'cConsultas.php';
   $consulta = new cConsultas();
