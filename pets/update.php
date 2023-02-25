@@ -6,7 +6,7 @@
   $id = $_GET['id'];
     
   if(empty($body['name']) || empty($body['description'] )){
-    header("Location: ../422.php");
+    header("Location: edit.php");
     exit();
   }
 

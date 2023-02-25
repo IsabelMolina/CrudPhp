@@ -5,7 +5,7 @@
   $body = $_POST;
 
   if(empty($body['name']) || empty($body['description'])){
-    header("Location: ../422.php");
+    header("Location: create.php");
     exit();
   }
 

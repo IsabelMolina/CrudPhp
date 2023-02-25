@@ -11,7 +11,7 @@
 
 ?>
 
-<?php include '../template/header.php'; ?>
+<?php include '../template/head.php'; ?>
 
     <div class="container">
         <h1>Mascotas</h1>
@@ -43,4 +43,4 @@
         </div>
     </div>
 
-<?php include '../template/footer.php'; ?>
+<?php include '../template/foot.php'; ?>
